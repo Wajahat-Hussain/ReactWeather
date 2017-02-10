@@ -13040,14 +13040,44 @@ module.exports = About;
 
 var React = __webpack_require__(5);
 
+var _require = __webpack_require__(112),
+    Link = _require.Link;
+
 var Examples = function Examples(props) {
 	return React.createElement(
 		'div',
 		null,
 		React.createElement(
-			'h2',
+			'h3',
 			null,
 			'Example Component!'
+		),
+		React.createElement(
+			'p',
+			null,
+			'Here are a few example location to try out!'
+		),
+		React.createElement(
+			'ol',
+			null,
+			React.createElement(
+				'li',
+				null,
+				React.createElement(
+					Link,
+					{ to: '/?location=Karachi' },
+					'Karachi, PK'
+				)
+			),
+			React.createElement(
+				'li',
+				null,
+				React.createElement(
+					Link,
+					{ to: '/?Islamabad=Karachi' },
+					'Lahore, PK'
+				)
+			)
 		)
 	);
 };
@@ -13068,11 +13098,14 @@ var Main = function Main(props) {
 		null,
 		React.createElement(Nav, null),
 		React.createElement(
-			'h1',
-			null,
-			'This is the main component'
-		),
-		props.children
+			'div',
+			{ className: 'row' },
+			React.createElement(
+				'div',
+				{ className: 'columns small-centered medium-6 large-4' },
+				props.children
+			)
+		)
 	);
 };
 module.exports = Main;
