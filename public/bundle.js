@@ -13001,16 +13001,19 @@ var OPEN_WEATHER_MAP_URL = 'http://api.openweathermap.org/data/2.5/weather?appid
 
 module.exports = {
 
-	getTemp: function getTemp(location) {
-		var encodedLocation = encodeURIComponent(location);
-		var requestUrl = OPEN_WEATHER_MAP_URL + '&q=' + encodedLocation;
+  getTemp: function getTemp(location) {
+    var encodedLocation = encodeURIComponent(location);
+    var requestUrl = OPEN_WEATHER_MAP_URL + '&q=' + encodedLocation;
 
-		return axios.get(requestUrl).then(function (res) {
-			if (res.data.cod && res.data.message) throw new Error(res.data.message);else return res.data.main.temp;
-		}, function (res) {
-			throw new Error(res.data.message);
-		});
-	}
+    return axios.get(requestUrl).then(function (res) {
+      if (res.data.cod === 200) {
+        return res.data; //.data.main.temp;
+      }
+      throw res.data.cod;
+    }, function (res) {
+      throw res && (res.response && res.response.data && (res.response.data.message || res.response.data) || res.code) || res;
+    });
+  }
 };
 
 /***/ }),
@@ -13299,15 +13302,17 @@ var Weather = React.createClass({
 		this.setState({
 			isLoading: true
 		});
-		openWeatherMap.getTemp(location).then(function (temp) {
+		openWeatherMap.getTemp(location).then(function (data) {
 			that.setState({
-				location: location,
-				temp: temp,
+				location: data.name,
+				temp: data.main.temp,
 				isLoading: false
 			});
 		}, function (errorMessage) {
 			that.setState({
-				isLoading: false
+				isLoading: false,
+				temp: undefined,
+				location: undefined
 			});
 			alert(errorMessage);
 		});

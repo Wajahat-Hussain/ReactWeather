@@ -13,15 +13,17 @@ var Weather = React.createClass({
 		this.setState({
 			isLoading: true
 		});
-		openWeatherMap.getTemp(location).then(function(temp){
-			that.setState({
-			location: location,
-			temp: temp,
+		openWeatherMap.getTemp(location).then(function(data){
+			that.setState({	
+			location: data.name,
+			temp: data.main.temp,
 			isLoading: false
 		});
 		}, function(errorMessage){
 			that.setState({
-				isLoading: false
+				isLoading: false,
+				temp: undefined,
+				location: undefined
 			})
 			alert(errorMessage);
 		}
