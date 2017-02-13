@@ -11,8 +11,8 @@ app.use(function (req, res, next){
     next();
   }
 });
-
 app.use(express.static('public'));
+app.use('/favicon.ico', express.static(__dirname + './app/images'));
 
 app.listen(PORT, function () {
   console.log('Express server is up on port ' + PORT);

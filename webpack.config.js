@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
 	entry: [
 	'script-loader!jquery/dist/jquery.min.js',
@@ -12,7 +13,10 @@ module.exports = {
 		new webpack.ProvidePlugin({
 			'$': 'jquery',
 			'jQuery': 'jquery'
-		})
+		}),
+		new HtmlWebpackPlugin({
+      favicon: './app/images/favicon.ico'
+    })
 	],
 	output: {
 		path: __dirname ,
@@ -39,7 +43,8 @@ module.exports = {
 			{
 				loader: 'babel-loader',
 				query: {
-					presets: ['react','es2015','stage-0']
+					presets: ['react','es2015','stage-0'],
+					compact: false
 				},
 				test: /\.jsx?$/,
 				exclude:/(node_modules | bower_components)/
