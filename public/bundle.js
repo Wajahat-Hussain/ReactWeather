@@ -13808,7 +13808,7 @@ var WeatherMessage = function WeatherMessage(_ref) {
 
 	return React.createElement(
 		"h4",
-		{ className: "text-center" },
+		{ className: "text-center customFontStyle" },
 		"Its ",
 		React.createElement(
 			"b",
@@ -29389,7 +29389,7 @@ exports = module.exports = __webpack_require__(79)();
 
 
 // module
-exports.push([module.i, ".page-title {\n  margin-top: 40px;\n  margin-bottom: 40px; }\n\ninput[type=search] {\n  box-shadow: none; }\n", ""]);
+exports.push([module.i, "body {\n  font-family: 'Noto Serif', serif !important; }\n\n.page-title {\n  margin-top: 40px;\n  margin-bottom: 40px;\n  font-family: 'Noto Serif', serif !important; }\n\ninput[type=search] {\n  box-shadow: none; }\n\n.customFontStyle {\n  font-family: 'Noto Serif', serif !important; }\n", ""]);
 
 // exports
 

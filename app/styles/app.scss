@@ -1,9 +1,17 @@
+body {
+	font-family: 'Noto Serif', serif !important;
+}
+
 $space-large: 40px;
 
 .page-title{
 	margin-top: $space-large;
 	margin-bottom: $space-large;
+	font-family: 'Noto Serif', serif !important;
 }
 input[type = search] {
 	box-shadow: none;
+}
+.customFontStyle {
+	font-family: 'Noto Serif', serif !important;	
 }

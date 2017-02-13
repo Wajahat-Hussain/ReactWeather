@@ -2,7 +2,7 @@ var React = require('react');
 
 var WeatherMessage = ({temp, location}) => {
 		return(
-			<h4 className = "text-center">Its <b>{temp} &#8451;</b> in <b>{location}</b>.</h4>
+			<h4 className = "text-center customFontStyle">Its <b>{temp} &#8451;</b> in <b>{location}</b>.</h4>
 		);	
 }
 
